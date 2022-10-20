@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  M4_EightBall
+//  M4_EightBall_SOLUTION
 //
-//  Created by Cameron Edwards on 29/9/22.
+//  Created by Lucy Edwards on 16/10/2022.
 //
 
 import SwiftUI
@@ -16,8 +16,9 @@ struct ContentView: View {
         "Reply hazy, try again",
         "My sources say no",
     ]
-    
+
     @State var randomNum = 0
+    @State var colour = Color.green
     @State var advice = ""
 
     var body: some View {
@@ -36,13 +37,26 @@ struct ContentView: View {
             .padding()
 
             Button("Shake the ball!") {
-                randomNum = Int.random(in: 0..<advices.count - 1)
+                randomNum = Int.random(in: 0..<advices.count)
                 advice = advices[randomNum]
+
+                if randomNum < 3 {
+                    colour = .green
+                } else if randomNum < 4 && randomNum > 2 {
+                    colour = .yellow
+                } else if randomNum > 3 {
+                    colour = .red
+                }
             }
+            .font(.title)
+            .buttonStyle(.borderedProminent)
             .padding()
 
             Text(advice)
+                .font(.largeTitle)
                 .padding()
+                .background(colour)
+                .cornerRadius(15)
         }
     }
 }
