@@ -18,7 +18,7 @@ struct ContentView: View {
     ]
 
     @State var randomNum = 0
-    @State var colour = Color.green
+    @State var colour = Color.clear
     @State var advice = ""
 
     var body: some View {
